@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { ContactForm } from "./landing/ContactForm";
 import FeatureCard from "./landing/Card";
 import { cardData } from "./constants/Constants";
-// import { MenuIcon, WavesIcon } from "./icons/Icons";
+
 
 export function Landing() {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -38,13 +38,13 @@ export function Landing() {
           <span className="text-2xl font-bold">BlueWave Analytics</span>
         </div>
         <nav className="space-x-4 hidden md:flex">
-          <a href="#" className="hover:underline">
+          <a href="#" className="hover:underline underline-offset-4">
             Home
           </a>
-          <a href="#" className="hover:underline">
+          <a href="#" className="hover:underline underline-offset-4">
             Features
           </a>
-          <a href="#" className="hover:underline">
+          <a href="#" className="hover:underline underline-offset-4">
             Contact
           </a>
           <Button variant="outline" className="bg-white text-blue-600">
@@ -95,8 +95,8 @@ export function Landing() {
       </div>
       <section className="bg-blue-600 text-white text-center py-20 animate-fade-in">
         <h1 className="text-4xl font-bold">Revolutionizing Water Management</h1>
-        <p className="mt-4">
-          Empowering you to monitor and manage water usage efficiently.
+        <p className="mt-4 px-48">
+        At our startup, we are driven by a collective vision to revolutionize water management through innovative technology. Our mission is to provide a comprehensive water tracking software platform that empowers borehole owners, water suppliers, and individual users to monitor and manage water usage efficiently.
         </p>
         <Button className="mt-6 animate-fade-in-up">Learn More</Button>
       </section>

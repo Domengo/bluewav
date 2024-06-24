@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { CardData } from "../constants/Constants";
 
@@ -22,7 +15,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
             <Image
               src={card.image}
               alt={card.alt}
-              className="mx-auto"
+              className="rounded-lg"
               height={150}
               width={230}
             />
@@ -31,12 +24,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
           <CardContent>
             {/* <CardDescription>
               <div> */}
-                <ul className="list-disc pl-4">
-                  {card.description.map((desc, index) => (
-                    <li key={index}>{desc}</li>
-                  ))}
-                </ul>
-              {/* </div>
+            <ul className="list-disc pl-4">
+              {card.description.map((desc, index) => (
+                <li key={index}>{desc}</li>
+              ))}
+            </ul>
+            {/* </div>
             </CardDescription> */}
           </CardContent>
         </Card>
