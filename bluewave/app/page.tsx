@@ -3,9 +3,9 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative w-full h-full bg-gray-300">
+    <div className="w-full min-h-screen bg-gray-300">
       <div className="mt-24 mx-auto w-3/4 flex flex-col items-center">
-        <div className="bg-purple-100 shadow-lg rounded-lg border border-gray-300 p-8 w-full text-center">
+        <div className="bg-purple-300 shadow-lg rounded-lg border border-gray-300 p-8 w-full text-center">
           <div className="text-black text-7xl font-roboto font-bold mb-4">
             Welcome to Aqua Watch
           </div>
