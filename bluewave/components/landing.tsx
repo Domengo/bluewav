@@ -95,7 +95,7 @@ export function Landing() {
       </div>
       <section className="bg-blue-600 text-white text-center py-20 animate-fade-in">
         <h1 className="text-4xl font-bold">Revolutionizing Water Management</h1>
-        <p className="mt-4 px-48">
+        <p className="mt-4 md:px-48">
         At our startup, we are driven by a collective vision to revolutionize water management through innovative technology. Our mission is to provide a comprehensive water tracking software platform that empowers borehole owners, water suppliers, and individual users to monitor and manage water usage efficiently.
         </p>
         <Button className="mt-6 animate-fade-in-up">Learn More</Button>
