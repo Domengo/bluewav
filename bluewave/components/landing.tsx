@@ -7,19 +7,10 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { ContactForm } from "./landing/ContactForm";
 import FeatureCard from "./landing/Card";
 import { cardData } from "./constants/Constants";
+// import { MenuIcon, WavesIcon } from "./icons/Icons";
 
 export function Landing() {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -43,7 +34,7 @@ export function Landing() {
         }`}
       >
         <div className="flex items-center space-x-2">
-          <WavesIcon className="h-8 w-8" />
+          {/* <WavesIcon className="h-8 w-8" /> */}
           <span className="text-2xl font-bold">BlueWave Analytics</span>
         </div>
         <nav className="space-x-4 hidden md:flex">
@@ -61,7 +52,7 @@ export function Landing() {
           </Button>
         </nav>
         <button className="md:hidden" onClick={() => setIsNavOpen(!isNavOpen)}>
-          <MenuIcon className="h-6 w-6" />
+          <WavesIcon className="h-6 w-6" />
         </button>
       </header>
       <div
@@ -118,46 +109,7 @@ export function Landing() {
         </div>
       </section>
       <section className="py-20 bg-gray-200 animate-fade-in">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10">Contact Us</h2>
-          <Card className="max-w-lg mx-auto animate-fade-in-up">
-            <CardHeader>
-              <CardTitle>Request Our Services</CardTitle>
-              <CardDescription>
-                Fill out the form below to get in touch with us.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Enter your name" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    placeholder="Enter your email"
-                    type="email"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Enter your message"
-                    className="min-h-[100px]"
-                  />
-                </div>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button className="ml-auto animate-fade-in-up">
-                Send Message
-              </Button>
-            </CardFooter>
-          </Card>
-        </div>
+        <ContactForm />
       </section>
       <footer className="bg-gray-800 text-white text-center py-4 animate-fade-in">
         <p>©2024 BlueWaveAnalytics All Rights Reserved</p>
@@ -177,7 +129,9 @@ export function Landing() {
   );
 }
 
-function MenuIcon(props) {
+interface IconProps extends React.SVGProps<SVGSVGElement> {}
+
+export function MenuIcon(props: IconProps): JSX.Element {
   return (
     <svg
       {...props}
@@ -191,14 +145,14 @@ function MenuIcon(props) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="18" x2="20" y2="18" />
     </svg>
   );
 }
 
-function WavesIcon(props) {
+export function WavesIcon(props: IconProps): JSX.Element {
   return (
     <svg
       {...props}

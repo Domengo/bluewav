@@ -23,24 +23,26 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
               src={card.image}
               alt={card.alt}
               className="mx-auto"
-              height={48}
-              width={48}
+              height={150}
+              width={230}
             />
             <CardTitle>{card.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              <ul className="list-disc pl-4">
-                {card.description.map((desc, index) => (
-                  <li key={index}>{desc}</li>
-                ))}
-              </ul>
-            </CardDescription>
+            {/* <CardDescription>
+              <div> */}
+                <ul className="list-disc pl-4">
+                  {card.description.map((desc, index) => (
+                    <li key={index}>{desc}</li>
+                  ))}
+                </ul>
+              {/* </div>
+            </CardDescription> */}
           </CardContent>
         </Card>
       ))}
     </>
   );
-}
+};
 
 export default FeatureCard;
