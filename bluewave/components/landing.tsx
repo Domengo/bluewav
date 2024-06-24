@@ -25,7 +25,7 @@ export function Landing() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-100">
       <header
         className={`bg-blue-600 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolledDown
