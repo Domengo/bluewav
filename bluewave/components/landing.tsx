@@ -91,7 +91,6 @@ export function Landing() {
           >
             Get Started
           </Button>
-          
         </div>
       </div>
       <section className="bg-blue-600 text-white text-center py-20 animate-fade-in">
@@ -116,8 +115,10 @@ export function Landing() {
       <section className="py-20 bg-gray-200 animate-fade-in">
         <ContactForm />
       </section>
-      <footer className="bg-gray-800 text-white text-center py-4 animate-fade-in">
-        <p>©2024 BlueWaveAnalytics All Rights Reserved</p>
+      <footer className="bg-gray-800 text-white text-center py-4 animate-fade-in flex gap-4 justify-center ">
+        <p>©2024 </p>
+        <p>BlueWaveAnalytics</p>
+        <p>All Rights Reserved</p>
         <div className="space-x-4">
           <a href="#" className="hover:underline">
             Privacy policy
