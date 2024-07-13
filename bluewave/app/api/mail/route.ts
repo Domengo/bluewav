@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
     try {
-        const formData = await request.formData();
-        const name = formData.get('name')?.toString() || 'Anonymous';
-        const email = formData.get('email')?.toString();
-        const message = formData.get('message')?.toString() || '';
+        const { name, email, message } = await request.json();
 
         const transporter = nodemailer.createTransport({
             host: "smtp-relay.brevo.com",
@@ -21,15 +18,19 @@ export async function POST(request: NextRequest) {
         const mailOptions = {
             from: email,
             to: process.env.YOUR_EMAIL,
-            subject: `New Message from ${name}`,
-            text: message,
+            subject: `New Message from ${name || 'Anonymous'}`,
+            text: message || '',
         };
 
         await transporter.sendMail(mailOptions);
 
         return NextResponse.json({ success: true, message: 'Email sent successfully' }, { status: 200 });
     } catch (error) {
-        console.error('Error occurred:', error as Error);
+        if (error instanceof Error) {
+        console.error('Error occurred:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        } else {
+            return NextResponse.json({ success: false }, { status: 500 });
+        }
     }
 }
