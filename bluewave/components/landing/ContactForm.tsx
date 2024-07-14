@@ -24,37 +24,43 @@ export function ContactForm() {
     event.preventDefault();
     setIsLoading(true);
 
-    const data = {
-      name,
-      email,
-      message,
-    };
+    const mailtoLink = `mailto:dominicsengo@gmail.com?subject=New Message from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
 
-    try {
-      const response = await fetch("/api/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify(data),
-      });
+    window.location.href = mailtoLink;
 
-      const result = await response.json();
+    setResponseMessage("Redirecting to email client...");
+    setIsLoading(false);
+  
+    // const data = {
+    //   name,
+    //   email,
+    //   message,
+    // };
 
-      if (response.ok) {
-        setResponseMessage("Email sent successfully!");
-        setName("");
-        setEmail("");
-        setMessage("");
-      } else {
-        setResponseMessage(`Error Try Again`);
-        // ${result.error}
-      }
-    } catch (error) {
-      setResponseMessage("Error: Unable to send email");
-    } finally {
-      setIsLoading(false);
-    }
+    // try {
+    //   const response = await fetch("/api/mail", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+
+    //   const result = await response.json();
+
+    //   if (response.ok) {
+    //     setResponseMessage("Email sent successfully!");
+    //     setName("");
+    //     setEmail("");
+    //     setMessage("");
+    //   } else {
+    //     setResponseMessage(`Error Try Again`);
+    //   }
+    // } catch (error) {
+    //   setResponseMessage("Error: Unable to send email");
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   return (

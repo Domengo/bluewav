@@ -13,6 +13,8 @@ export async function POST(request: NextRequest) {
                 user: process.env.MAIL_USERNAME,
                 pass: process.env.MAIL_PASSWORD,
             },
+            // debug: true,
+            // logger: true
         });
 
         const mailOptions = {
@@ -34,3 +36,4 @@ export async function POST(request: NextRequest) {
         }
     }
 }
+
