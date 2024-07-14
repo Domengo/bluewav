@@ -11,7 +11,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
     <>
       {cardData.map((card: CardData) => (
         <Card key={card.id} className="animate-fade-in-up flex ">
-          <CardHeader className="border">
+          <CardHeader >
             <Image
               src={card.image}
               alt={card.alt}
@@ -24,7 +24,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
           <CardContent>
             {/* <CardDescription>
               <div> */}
-            <ul className="list-disc pl-4 border ">
+            <ul className="list-disc pl-4">
               {card.description.map((desc, index) => (
                 <li key={index}>{desc}</li>
               ))}
