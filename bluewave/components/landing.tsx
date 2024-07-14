@@ -5,7 +5,7 @@
  */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "./landing/ContactForm";
 import FeatureCard from "./landing/Card";
@@ -14,6 +14,12 @@ import { ModeToggle } from "./ui/theme-toggler";
 
 export function Landing() {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const homeRef = useRef(null);
+  const featuresRef = useRef(null);
+  const contactRef = useRef(null);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.pageYOffset;
@@ -22,7 +28,12 @@ export function Landing() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const handleNavClick = (ref: { current: any; }) => () => {
+    ref.current!.scrollIntoView({ behavior: "smooth" });
+    setIsNavOpen(false);
+  };
+  
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -38,13 +49,13 @@ export function Landing() {
           <span className="text-2xl font-bold">BlueWave Analytics</span>
         </div>
         <nav className="space-x-4 hidden md:flex">
-          <a href="#" className="hover:underline underline-offset-4">
+          <a href="#" onClick={handleNavClick(homeRef)} className="hover:underline underline-offset-4">
             Home
           </a>
-          <a href="#" className="hover:underline underline-offset-4">
+          <a href="#" onClick={handleNavClick(featuresRef)} className="hover:underline underline-offset-4">
             Features
           </a>
-          <a href="#" className="hover:underline underline-offset-4">
+          <a href="#" onClick={handleNavClick(contactRef)} className="hover:underline underline-offset-4">
             Contact
           </a>
           <Button variant="outline" className="bg-white text-blue-600">
@@ -66,34 +77,34 @@ export function Landing() {
           <a
             href="#"
             className="text-2xl font-bold hover:underline"
-            onClick={() => setIsNavOpen(false)}
+            onClick={handleNavClick(homeRef)}
           >
             Home
           </a>
           <a
             href="#"
             className="text-2xl font-bold hover:underline"
-            onClick={() => setIsNavOpen(false)}
+            onClick={handleNavClick(featuresRef)}
           >
             Features
           </a>
           <a
             href="#"
             className="text-2xl font-bold hover:underline"
-            onClick={() => setIsNavOpen(false)}
+            onClick={handleNavClick(contactRef)}
           >
             Contact
           </a>
           <Button
             variant="outline"
             className="bg-white text-blue-600"
-            onClick={() => setIsNavOpen(false)}
+            onClick={handleNavClick(contactRef)}
           >
             Get Started
           </Button>
         </div>
       </div>
-      <section className="bg-blue-600 text-white text-center py-20 animate-fade-in">
+      <section ref={homeRef} className="bg-blue-600 text-white text-center py-20 animate-fade-in">
         <h1 className="text-4xl font-bold">Revolutionizing Water Management</h1>
         <p className="mt-4 px-4 md:px-48">
           At our startup, we are driven by a collective vision to revolutionize
@@ -102,9 +113,9 @@ export function Landing() {
           borehole owners, water suppliers, and individual users to monitor and
           manage water usage efficiently.
         </p>
-        <Button className="mt-6 animate-fade-in-up">Learn More</Button>
+        <Button onClick={handleNavClick(contactRef)} className="mt-6 animate-fade-in-up">Learn More</Button>
       </section>
-      <section className="py-20 animate-fade-in">
+      <section ref={featuresRef} className="py-20 animate-fade-in">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10">App Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
@@ -112,7 +123,7 @@ export function Landing() {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-gray-200 animate-fade-in">
+      <section ref={contactRef} className="py-20 bg-gray-200 animate-fade-in">
         <ContactForm />
       </section>
       <footer className="bg-gray-800 text-white text-center py-4 animate-fade-in flex gap-4 justify-center ">
