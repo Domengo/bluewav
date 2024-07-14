@@ -24,7 +24,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ cardData }) => {
           <CardContent>
             {/* <CardDescription>
               <div> */}
-            <ul className="list-disc pl-4">
+            <ul className="list-disc pl-4 pt-8">
               {card.description.map((desc, index) => (
                 <li key={index}>{desc}</li>
               ))}
